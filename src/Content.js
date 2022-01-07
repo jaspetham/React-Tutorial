@@ -9,7 +9,7 @@ const Content = ({items,handleCheck,handleDelete}) => {
                     handleDelete = {handleDelete}
                 />
             ): (
-                <p style={{marginTop:'2rem',color:'red'}}>Your List is Empty Now</p>
+                <p style={{marginTop:'2rem',color:'red',fontSize:'1.5em'}}>Your List is Empty Now</p>
             )}
         </main>
     )
