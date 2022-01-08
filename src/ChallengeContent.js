@@ -4,7 +4,7 @@ const ChallengeContent = ({color,darkText}) => {
             backgroundColor: color,
             color: darkText ? "#FFF" : "#000"
         }}>
-            <p>{color ? color:'No color'}</p>
+            <p>{color ? color:'No color yet'}</p>
         </div>
     )
 }
