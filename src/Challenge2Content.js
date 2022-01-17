@@ -1,5 +1,3 @@
-
-
 const Challenge2Content = ({category,checkItem,datas}) => {
     return (
         <>
@@ -7,9 +5,9 @@ const Challenge2Content = ({category,checkItem,datas}) => {
                 width:`100%`
             }}>
                 <ul className="flex flow">
-                    <li className="cat-item active" onClick={(e) => checkItem(1,e.target)}>Users</li>
-                    <li className="cat-item" onClick={(e) => checkItem(2,e.target)}>Posts</li>
-                    <li className="cat-item" onClick={(e) => checkItem(3,e.target)}>Comments</li>
+                    <li className="cat-item active" aria-controls="users" onClick={(e) => checkItem(1,e.target)}>Users</li>
+                    <li className="cat-item" aria-controls="posts" onClick={(e) => checkItem(2,e.target)}>Posts</li>
+                    <li className="cat-item" aria-controls="comments" onClick={(e) => checkItem(3,e.target)}>Comments</li>
                 </ul>
             </nav>
             <div className="content">

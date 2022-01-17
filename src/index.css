@@ -216,11 +216,38 @@
    color: white;
  }
 
- .cat-item{
+ .cat-item {
    cursor: pointer;
  }
 
- .cat-item.active{
+ .cat-item.active {
    background-color: white;
-   color:black;
+   color: black;
+ }
+
+ .listStyle>li {
+   margin: .2rem 0;
+   padding: .5rem 0;
+   padding-left: 2rem;
+   position: relative;
+   border: 5px solid red;
+ }
+
+ .listStyle>li::before {
+   content: '+';
+   position: absolute;
+   left: 0;
+   top: 50%;
+   transform: translateY(-50%);
+   font-size: 1.5em;
+   font-weight: 600;
+ }
+
+ button.selected {
+   background: red;
+   color: white;
+ }
+
+ table>tbody>tr>td {
+   border: 2px solid black;
  }

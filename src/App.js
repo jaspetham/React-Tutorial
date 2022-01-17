@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
+import Challenge2AnswerDataList from "./Challenge2AnswerDataList";
 import Challenge2Content from "./Challenge2Content";
+import Challenge2ContentAnswer from "./Challenge2ContentAnswer";
 // import ChallengeContent from "./ChallengeContent";
 // import ChallengeSearch from "./ChallengeSearch";
 
@@ -105,39 +107,50 @@ function App() {
 // Challenge 1 END
 
 // Challenge 2
-  const API_URL = 'https://jsonplaceholder.typicode.com/users';
+  const API_URL = 'https://jsonplaceholder.typicode.com/';
   const [category, setCategory] = useState(1);
-  const [fetchError, setFetchError] = useState(null);
-  const [isLoading, setIsLoading] = useState(true)
+  const [apiType, setApiType] = useState('users')
   const [datas, setDatas] = useState([]);
+  // useEffect(()=>{
+  //   fetchDatas('users');
+  // },[]);
+  // const fetchDatas = async (apiType) => {
+  //   try{
+  //     const response = await fetch(`${API_URL}${apiType}`);
+  //     if(!response.ok) throw Error('Did not receive expected data');
+  //     const datas = await response.json();
+  //     setDatas(datas);
+  //   } catch(err){
+  //     console.log(err);
+  //   }
+  // }
+  // const checkItem = (id,item) => {
+  //   setCategory(id);
+  //   var i;
+  //   const element = document.getElementsByClassName('cat-item');
+  //   for (i = 0; i < element.length; i++) {
+  //     element[i].classList.remove('active');
+  //   }
+  //   item.classList.add('active');
+
+  //   const elementTarget = item.getAttribute('aria-controls');
+  //   fetchDatas(elementTarget);
+  // }
+
+  // challenge 2 solution
   useEffect(()=>{
     const fetchDatas = async () => {
       try{
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}${apiType}`);
         if(!response.ok) throw Error('Did not receive expected data');
-        const datas = await response.json();
-        console.log(datas);
-        setDatas(datas);
-        // setFetchError(null);
+        const data = await response.json();
+        setDatas(data);
       } catch(err){
-        // setFetchError(err.message);
-      } finally{
-        // setIsLoading(false);
+        console.log(err);
       }
     }
-    setTimeout(()=>{
-      (async() => await fetchDatas())();
-    },2000)
-  },[])
-  const checkItem = (id,item) => {
-    setCategory(id);
-    var i;
-    const element = document.getElementsByClassName('cat-item');
-    for (i = 0; i < element.length; i++) {
-      element[i].classList.remove('active');
-    }
-    item.classList.add('active');
-  }
+    fetchDatas();
+  },[apiType]);
 // Challenge 2 END
   return (
     <div className="App">
@@ -156,9 +169,16 @@ function App() {
       {/* Challenge 1 END */}
       {/* Challenge 2 */}
       <main>
-        <Challenge2Content
+        {/* <Challenge2Content
           category = {category}
           checkItem = {checkItem}
+          datas = {datas}
+        /> */}
+        <Challenge2ContentAnswer
+          apiType = {apiType}
+          setApiType = {setApiType}
+        />
+        <Challenge2AnswerDataList
           datas = {datas}
         />
       </main>
